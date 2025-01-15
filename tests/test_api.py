@@ -1,6 +1,11 @@
+import allure
 import requests
 
 
+@allure.suite("API test")
+@allure.title("test_yandex_market_delivery_api")
+@allure.description("Проверка поиска по параметрам")
+@allure.severity(allure.severity_level.CRITICAL)
 def test_yandex_market_delivery_api():
     url = 'https://market-delivery.yandex.ru/api/v2/catalog/tashir_gyoln'
     params = {
@@ -56,7 +61,10 @@ def test_yandex_market_delivery_api():
 
 
 
-
+@allure.suite("API test")
+@allure.title("test_yandex_seo_meta_tags_api")
+@allure.description("Добавление позиции в корзину")
+@allure.severity(allure.severity_level.CRITICAL)
 def test_yandex_seo_meta_tags_api():
     url = 'https://market-delivery.yandex.ru/web-api/seo-meta-tags'
     params = {
@@ -109,7 +117,10 @@ def test_yandex_seo_meta_tags_api():
         'x-ya-coordinates': 'latitude=57.672392,longitude=40.016066',
         'x-ya-user-location': 'latitude=57.6421888,longitude=39.9179776'
     }
-
+@allure.suite("API test")
+@allure.title("test_yandex_catalog_chaplins_api")
+@allure.description("Удаление позиции из корзины")
+@allure.severity(allure.severity_level.CRITICAL)
 def test_yandex_catalog_chaplins_api():
     url = 'https://market-delivery.yandex.ru/api/v2/catalog/chaplins_7jspz'
     params = {
@@ -158,6 +169,10 @@ def test_yandex_catalog_chaplins_api():
     response = requests.get(url, params=params, headers=headers)
     assert response.status_code == 200, f"Expected status 200, but got {response.status_code}"
 
+@allure.suite("API test")
+@allure.title("test_yandex_catalog_bao_api")
+@allure.description("Оформление заказа")
+@allure.severity(allure.severity_level.CRITICAL)
 def test_yandex_catalog_bao_api():
     url = 'https://market-delivery.yandex.ru/api/v2/catalog/bao_5mkgj'
     params = {
@@ -204,6 +219,10 @@ def test_yandex_catalog_bao_api():
     response = requests.get(url, params=params, headers=headers)
     assert response.status_code == 200, f"Expected status 200, but got {response.status_code}"
 
+@allure.suite("API test")
+@allure.title("test_yandex_menu_retrieve_api")
+@allure.description("Уменьшить количество позиций")
+@allure.severity(allure.severity_level.CRITICAL)
 def test_yandex_menu_retrieve_api():
     url = 'https://market-delivery.yandex.ru/api/v2/menu/retrieve/respublika_kofe_'
     params = {

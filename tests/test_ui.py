@@ -1,6 +1,7 @@
 # tests/test_ui.py
 from re import search
 
+import allure
 import pytest
 from black.lines import field
 from selenium import webdriver
@@ -18,6 +19,10 @@ def browser():
     yield driver
     driver.quit()
 
+@allure.suite("API test")
+@allure.title("test_search_field")
+@allure.description("Проверка поиска")
+@allure.severity(allure.severity_level.CRITICAL)
 def test_search_field(browser):
     shop = 'магнит'
     browser.get (URL)
@@ -31,6 +36,10 @@ def test_search_field(browser):
     search_button.click()
     WebDriverWait(browser, 10).until(EC.text_to_be_present_in_element((By.XPATH, '//*[@data-testid="place-header-title"]'),text_='Магнит'))
 
+@allure.suite("API test")
+@allure.title("test_pozitive_search")
+@allure.description("Проверка поиска магазина")
+@allure.severity(allure.severity_level.CRITICAL)
 def test_pozitive_search(browser):
     browser.get (URL)
     sleep(5)
@@ -39,7 +48,10 @@ def test_pozitive_search(browser):
     WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.TAG_NAME, 'input'))).send_keys('Вкусно и точка')
     WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.XPATH, '/html[1]/body[1]/div[2]/div[1]/header[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/button[1]/span[1]'))).click()
 
-
+@allure.suite("API test")
+@allure.title("test_negative_search")
+@allure.description("Проверка поиска позиции")
+@allure.severity(allure.severity_level.CRITICAL)
 def test_negative_search(browser):
     browser.get (URL)
     sleep(5)
@@ -48,6 +60,10 @@ def test_negative_search(browser):
     WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.TAG_NAME, 'input'))).send_keys('£$!£%^')
     WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.XPATH, '/html[1]/body[1]/div[2]/div[1]/header[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[3]/div[1]/button[1]/span[1]'))).click()
 
+@allure.suite("API test")
+@allure.title("test_plus_pozition_delivery")
+@allure.description("Отслеживание заказа")
+@allure.severity(allure.severity_level.CRITICAL)
 def test_plus_pozition_delivery(browser):
     browser.get(URL)
     sleep(5)
@@ -57,7 +73,10 @@ def test_plus_pozition_delivery(browser):
     WebDriverWait(browser, 10).until(EC.element_to_be_clickable((By.XPATH, "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/main[1]/div[1]/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/ul[1]/li[1]/div[1]/div[1]/div[1]/div[3]/button[1]/*[name()='svg'][1]/*[name()='use'][1]"))).click()
     sleep(4)
 
-
+@allure.suite("API test")
+@allure.title("test_minus_pozition_delivery")
+@allure.description("Изменение количества позиций")
+@allure.severity(allure.severity_level.CRITICAL)
 def test_minus_pozition_delivery(browser):
     browser.get(URL)
     sleep(5)
