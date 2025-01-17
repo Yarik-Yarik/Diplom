@@ -7,13 +7,14 @@ import requests
 @allure.description("Проверка поиска по параметрам")
 @allure.severity(allure.severity_level.CRITICAL)
 def test_yandex_market_delivery_api():
-    url = 'https://market-delivery.yandex.ru/api/v2/catalog/tashir_gyoln'
-    params = {
+    with allure.step("Проставление параметров запроса"):
+        url = 'https://market-delivery.yandex.ru/api/v2/catalog/tashir_gyoln'
+        params = {
         'longitude': '40.016066',
         'latitude': '57.672392',
         'shippingType': 'delivery'
     }
-    headers = {
+        headers = {
         'accept': 'application/json, text/plain, */*',
         'accept-language': 'ru',
         'cookie': ('yuidss=8866985891693403522; yandexuid=8866985891693403522; '
@@ -55,8 +56,8 @@ def test_yandex_market_delivery_api():
         'x-ya-coordinates': 'latitude=57.672392,longitude=40.016066',
         'x-ya-user-location': 'latitude=57.6421888,longitude=39.9179776'
     }
-
-    response = requests.get(url, params=params, headers=headers)
+    with allure.step("Отправка запроса"):
+        response = requests.get(url, params=params, headers=headers)
     assert response.status_code == 200, f"Expected status 200, but got {response.status_code}"
 
 
@@ -66,7 +67,8 @@ def test_yandex_market_delivery_api():
 @allure.description("Добавление позиции в корзину")
 @allure.severity(allure.severity_level.CRITICAL)
 def test_yandex_seo_meta_tags_api():
-    url = 'https://market-delivery.yandex.ru/web-api/seo-meta-tags'
+    with allure.step("Проставление параметров запроса"):
+        url = 'https://market-delivery.yandex.ru/web-api/seo-meta-tags'
     params = {
         'longitude': '40.016066',
         'latitude': '57.672392',
@@ -122,7 +124,8 @@ def test_yandex_seo_meta_tags_api():
 @allure.description("Удаление позиции из корзины")
 @allure.severity(allure.severity_level.CRITICAL)
 def test_yandex_catalog_chaplins_api():
-    url = 'https://market-delivery.yandex.ru/api/v2/catalog/chaplins_7jspz'
+    with allure.step("Проставление параметров запроса"):
+        url = 'https://market-delivery.yandex.ru/api/v2/catalog/chaplins_7jspz'
     params = {
         'longitude': '40.016066',
         'latitude': '57.672392',
@@ -165,8 +168,8 @@ def test_yandex_catalog_chaplins_api():
         'x-ya-coordinates': 'latitude=57.672392,longitude=40.016066',
         'x-ya-user-location': 'latitude=57.6421888,longitude=39.9179776'
     }
-
-    response = requests.get(url, params=params, headers=headers)
+    with allure.step("Отправка запроса"):
+        response = requests.get(url, params=params, headers=headers)
     assert response.status_code == 200, f"Expected status 200, but got {response.status_code}"
 
 @allure.suite("API test")
@@ -174,7 +177,8 @@ def test_yandex_catalog_chaplins_api():
 @allure.description("Оформление заказа")
 @allure.severity(allure.severity_level.CRITICAL)
 def test_yandex_catalog_bao_api():
-    url = 'https://market-delivery.yandex.ru/api/v2/catalog/bao_5mkgj'
+    with allure.step("Проставление параметров запроса"):
+        url = 'https://market-delivery.yandex.ru/api/v2/catalog/bao_5mkgj'
     params = {
         'longitude': '40.016066',
         'latitude': '57.672392',
@@ -215,8 +219,8 @@ def test_yandex_catalog_bao_api():
         'x-ya-coordinates': 'latitude=57.672392,longitude=40.016066',
         'x-ya-user-location': 'latitude=57.6421888,longitude=39.9179776'
     }
-
-    response = requests.get(url, params=params, headers=headers)
+    with allure.step("Отправка запроса"):
+        response = requests.get(url, params=params, headers=headers)
     assert response.status_code == 200, f"Expected status 200, but got {response.status_code}"
 
 @allure.suite("API test")
@@ -224,7 +228,8 @@ def test_yandex_catalog_bao_api():
 @allure.description("Уменьшить количество позиций")
 @allure.severity(allure.severity_level.CRITICAL)
 def test_yandex_menu_retrieve_api():
-    url = 'https://market-delivery.yandex.ru/api/v2/menu/retrieve/respublika_kofe_'
+    with allure.step("Проставление параметров запроса"):
+        url = 'https://market-delivery.yandex.ru/api/v2/menu/retrieve/respublika_kofe_'
     params = {
         'longitude': '40.016066',
         'latitude': '57.672392',
@@ -266,8 +271,8 @@ def test_yandex_menu_retrieve_api():
         'x-ya-coordinates': 'latitude=57.672392,longitude=40.016066',
         'x-ya-user-location': 'latitude=57.6421888,longitude=39.9179776'
     }
-
-    response = requests.get(url, params=params, headers=headers)
+    with allure.step("Отправка запроса"):
+        response = requests.get(url, params=params, headers=headers)
     assert response.status_code == 200, f"Expected status 200, but got {response.status_code}"
 
 
